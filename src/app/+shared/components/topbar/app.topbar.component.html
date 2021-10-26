@@ -1,0 +1,71 @@
+<div class="layout-topbar p-shadow-4">
+    <div class="layout-topbar-left">
+        <a class="layout-topbar-logo" routerLink="/">
+
+            <div class="p-d-flex p-ai-center">
+                <div class="p-mr-2"><span>Cidenet</span></div>
+            </div>
+
+        </a>
+
+        <a class="layout-menu-button p-shadow-6" (click)="appMain.onMenuButtonClick($event)" pRipple>
+            <i class="pi pi-chevron-right"></i>
+        </a>
+
+        <a class="layout-topbar-mobile-button" (click)="appMain.onTopbarMobileButtonClick($event)" pRipple>
+            <i class="pi pi-ellipsis-v fs-large"></i>
+        </a>
+    </div>
+
+    <div class="layout-topbar-right" [ngClass]="{'layout-topbar-mobile-active': appMain.mobileTopbarActive}">
+        <div class="layout-topbar-actions-left">
+          
+        </div>
+        <div class="layout-topbar-actions-right">
+            <ul class="layout-topbar-items">
+                <!-- <li class="layout-topbar-item layout-search-item">
+                    <a class="layout-topbar-action rounded-circle" (click)="appMain.onTopbarItemClick($event, 'search')"
+                        pRipple>
+                        <i class="pi pi-search fs-large"></i>
+                    </a>
+
+                    <div class="layout-search-panel p-inputgroup" [@topbarActionPanelAnimation]="'visible'"
+                        *ngIf="appMain.search" (@topbarActionPanelAnimation.done)="onSearchAnimationEnd($event)">
+                        <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
+                        <input #searchInput type="text" pInputText placeholder="Search"
+                            (click)="appMain.searchClick = true;" (keydown)="appMain.onSearchKeydown($event)">
+                        <span class="p-inputgroup-addon">
+                            <button pButton pRipple type="button" icon="pi pi-times"
+                                class="p-button-rounded p-button-text p-button-plain"
+                                (click)="appMain.searchClick = false;"></button>
+                        </span>
+                    </div>
+                </li> -->
+                <li class="layout-topbar-item">
+                    <a class="layout-topbar-action p-d-flex p-dir-row p-jc-center p-ai-center p-px-2 rounded-circle"
+                        (click)="appMain.onTopbarItemClick($event, 'profile')" pRipple>
+                        <button pButton pRipple type="button" icon="pi pi-power-off" class="p-button-rounded p-button-text p-button-plain p-mr-1"></button>
+
+                    </a>
+
+                    <ul class="layout-topbar-action-panel p-shadow-6" [@topbarActionPanelAnimation]="'visible'"
+                        *ngIf="appMain.activeTopbarItem === 'profile'">
+                        <li class="layout-topbar-action-item">
+                            <a class="p-d-flex p-flex-row p-ai-center" pRipple>
+                                <i class="pi pi-cog" [ngClass]="{'p-mr-2': !app.isRTL, 'p-ml-2': app.isRTL}"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="layout-topbar-action-item">
+                            <a class="p-d-flex p-flex-row p-ai-center" pRipple>
+                                <i class="pi pi-power-off" [ngClass]="{'p-mr-2': !app.isRTL, 'p-ml-2': app.isRTL}"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            
+            </ul>
+        </div>
+    </div>
+</div>

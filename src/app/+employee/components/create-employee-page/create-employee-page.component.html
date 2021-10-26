@@ -1,0 +1,134 @@
+<div class="p-col-12">
+    <div class="card p-fluid" style="width: 100%">
+        <form [formGroup]="employeeForm" novalidate>
+            <div class="card">
+                <div class="card">
+                    <h5>CREACIÓN EMPLEADO</h5>
+                </div>
+                <div class="card">
+                    <input type="hidden" id="id" formControlName="id" formControlName="id">
+                    <!-- div padre -->
+                    <div class="p-grid p-formgrid">
+                        <div class="p-col-6">
+                            <span class="p-float-label">
+                                <input type="text" id="name" formControlName="name" pInputText>
+                                <label>Nombre *</label>
+                                <div class="p-error" *ngIf="employeeForm.get('name').hasError">
+                                    Debe ingresar nombre
+                                </div>
+                            </span>
+                        </div>
+                        <div class="p-col-6">
+                            <span class="p-float-label">
+                                <input type="text" id="firstLastName" formControlName="firstLastName" pInputText>
+                                <label>Primer Apellido *</label>
+                                <div class="p-error" *ngIf="employeeForm.get('firstLastName').hasError">
+                                    Debe ingresar primer apellido
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="p-grid p-formgrid">
+                        <div class="p-col-6">
+                            <span class="p-float-label">
+                                <input type="text" id="secondLastName" formControlName="secondLastName" pInputText>
+                                <label>Segundo Apellido *</label>
+                                <div class="p-error" *ngIf="employeeForm.get('secondLastName').hasError">
+                                    Debe ingresar apellido
+                                </div>
+                            </span>
+                        </div>
+                        <div class="p-col-6">
+                            <span class="p-float-label">
+                                <input type="text" id="othersName" formControlName="othersName" pInputText>
+                                <label>Otros nombres</label>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="p-grid p-formgrid">
+                        <div class="p-col-6">
+                            <span class="p-float-label">
+                                <p-autoComplete formControlName="country" [dropdown]="true" [minLength]="1" field="description"
+                                    [suggestions]="listCountries" (completeMethod)="loadCountry()"
+                                    [forceSelection]="true">
+                                </p-autoComplete>
+                                <label>País *</label>
+                                <div class="p-error" *ngIf="employeeForm.get('country').hasError">
+                                    Debe ingresar País.
+                                </div>
+                            </span>
+                        </div>
+                        <div class="p-col-6">
+                            <span class="p-float-label">
+                                <input type="text" id="identificationType" formControlName="identificationType"
+                                    pInputText>
+                                <label>Tipo Identificacion *</label>
+                                <div class="p-error" *ngIf="employeeForm.get('identificationType').hasError">
+                                    Debe ingresar tipo identificacion
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="p-grid p-formgrid">
+                        <div class="p-col-6">
+                            <span class="p-float-label">
+                                <input type="text" id="numberIdentification" formControlName="numberIdentification"
+                                    pInputText>
+                                <label>Numero Identificacion *</label>
+                                <div class="p-error" *ngIf="employeeForm.get('numberIdentification').hasError">
+                                    Debe ingresar numero identificacion
+                                </div>
+                            </span>
+                        </div>
+                        <div class="p-col-6">
+                            <span class="p-float-label">
+                                <p-calendar formControlName="admissionDate" showTime="true" hourFormat="12"
+                                    [showTime]="false"></p-calendar>
+                                <label>fecha admision (*)</label>
+                            </span>
+                            <div class="p-error" *ngIf="employeeForm.get('admissionDate').hasError">
+                                Debe Seleccionar una fecha y hora inicial
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-grid p-formgrid">
+                    <div class="p-col-6">
+                        <span class="p-float-label">
+                            <p-autoComplete formControlName="area" [dropdown]="true" [minLength]="1" field="name"
+                                [suggestions]="listAreas" (completeMethod)="loadArea()" [forceSelection]="true">
+                            </p-autoComplete>
+                            <label>Area *</label>
+                            <div class="p-error" *ngIf="employeeForm.get('area').hasError">
+                                Debe ingresar Area.
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <p-messages [(value)]="msgs1" [enableService]="false"></p-messages>
+        <div class="p-grid p-formgrid" style="justify-content: center; padding-top: 20px;">
+            <div class="p-col-2">
+                <p-toast key="tst"></p-toast>
+                <p-confirmDialog key="confirm1" icon="pi pi-exclamation-triangle"
+                    message="¿Está seguro de almacenar los cambios realizados?" [style]="{width: '425px'}"
+                    acceptButtonStyleClass="p-button-text" rejectButtonStyleClass="p-button-text" acceptLabel="Aceptar"
+                    rejectLabel="Cancelar">
+                </p-confirmDialog>
+
+                <span class="p-float-label">
+                    <button pButton pRipple label="GUARDAR" class="p-button-raised" (click)="saveEmployee()"></button>
+                </span>
+            </div>
+            <div class="p-col-2">
+                <span class="p-float-label">
+                    <button pButton pRipple label="CANCELAR" class="p-button-raised" (click)="cancelar()"></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
